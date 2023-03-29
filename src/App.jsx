@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import './App.css'
 export default function App() {
 	const [imageSrc, setImageSrc] = useState(null)
 	const topTextInput = useRef(null)
@@ -17,11 +18,12 @@ export default function App() {
 			ctx.drawImage(image, 0, 0)
 			const topText = topTextInput.current.value.toUpperCase()
 			const bottomText = bottomTextInput.current.value.toUpperCase()
-			ctx.font = '48px Impact'
+			const fontSize = canvas.width * 0.08 // Ajusta el tamaño de la fuente en función del ancho del canvas
+			ctx.font = `${fontSize}px Impact`
 			ctx.fillStyle = 'white'
 			ctx.textAlign = 'center'
 			ctx.strokeStyle = 'black'
-			ctx.lineWidth = 2
+			ctx.lineWidth = fontSize * 0.1 // Ajusta el grosor del trazo en función del tamaño de la fuente
 
 			// Dibuja el texto superior
 			ctx.fillText(topText, canvas.width / 2, 50)
