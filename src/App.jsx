@@ -43,7 +43,7 @@ export default function App() {
 			const topText = topTextInput.current.value.toUpperCase()
 			const bottomText = bottomTextInput.current.value.toUpperCase()
 			const fontSize = canvas.width * 0.08 // Ajusta el tamaño de la fuente en función del ancho del canvas
-			ctx.font = `${isMobileDevice ? '24' : '48'}px Impact`
+			ctx.font = `${fontSize}px Impact`
 			ctx.fillStyle = 'white'
 			ctx.textAlign = 'center'
 
@@ -105,7 +105,7 @@ export default function App() {
 		<div className='register'>
 			<h1 className='text-3xl font-bold text-center text-white'>Generador de Memes</h1>
 			<div className='flex flex-col md:flex-row m-14 max-h-fit'>
-				<div className='p-2 h-full md:h-[480px] w-full md:w-[40%] self-center'>
+				<div className='p-8 h-full md:h-[480px] w-full md:w-[40%] self-center'>
 					<input
 						type='text'
 						ref={topTextInput}
