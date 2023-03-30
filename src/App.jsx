@@ -1,5 +1,8 @@
 import React, { useState, useRef } from 'react'
 import './App.css'
+
+const isMobileDevice = () => {}
+
 export default function App() {
 	const [imageSrc, setImageSrc] = useState(null)
 	const topTextInput = useRef(null)
@@ -19,15 +22,28 @@ export default function App() {
 			const topText = topTextInput.current.value.toUpperCase()
 			const bottomText = bottomTextInput.current.value.toUpperCase()
 			const fontSize = canvas.width * 0.08 // Ajusta el tamaño de la fuente en función del ancho del canvas
-			ctx.font = `${fontSize}px Impact`
+			ctx.font = `${isMobileDevice ? '24' : '48'}px Impact`
 			ctx.fillStyle = 'white'
 			ctx.textAlign = 'center'
-			ctx.strokeStyle = 'black'
-			ctx.lineWidth = fontSize * 0.1 // Ajusta el grosor del trazo en función del tamaño de la fuente
 
+			ctx.strokeStyle = 'black'
+			ctx.lineWidth = `${isMobileDevice ? '1' : '2'}` // Ajusta el grosor del trazo en función del tamaño de la fuente
+
+			const paddingTop = fontSize + 10
 			// Dibuja el texto superior
-			ctx.fillText(topText, canvas.width / 2, 50)
-			ctx.strokeText(topText, canvas.width / 2, 50)
+			{
+				isMobileDevice() ? (
+					<>
+						{ctx.fillText(topText, canvas.width / 2, paddingTop)}
+						{ctx.strokeText(topText, canvas.width / 2, paddingTop)}
+					</>
+				) : (
+					<>
+						{ctx.fillText(topText, canvas.width / 2, 50)}
+						{ctx.strokeText(topText, canvas.width / 2, 50)}
+					</>
+				)
+			}
 
 			// Dibuja el texto inferior
 			ctx.fillText(bottomText, canvas.width / 2, canvas.height - 20)
