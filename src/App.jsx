@@ -102,10 +102,10 @@ export default function App() {
 	}
 
 	return (
-		<div className='register'>
+		<div className={`register mx-auto max-w-screen-2xl`}>
 			<h1 className='text-3xl font-bold text-center text-white'>Generador de Memes</h1>
-			<div className='flex flex-col md:flex-row m-14 max-h-fit'>
-				<div className='p-8 h-full md:h-[480px] w-full md:w-[40%] self-center'>
+			<div className='flex flex-col md:flex-row md:m-14 max-h-fit'>
+				<div className='p-2 md:p-8 h-full md:h-[480px] w-full md:w-[40%] self-center'>
 					<input
 						type='text'
 						ref={topTextInput}
@@ -141,7 +141,7 @@ export default function App() {
 							</button>
 							<div ref={slider} className='snap-x overflow-x-scroll scroll-smooth h-full flex items-center justify-start'>
 								{img.map((meme, index) => (
-									<div key={index} className='snap-start flex flex-shrink-0 w-1/3 h-1/3 mx-4'>
+									<div key={index} className='snap-start flex flex-shrink-0 w-1/2 h-1/2 md:w-1/3 md:h-1/3 mx-2 md:mx-4'>
 										<img
 											src={meme}
 											alt={`template-${index}`}
@@ -180,13 +180,13 @@ export default function App() {
 
 					<button
 						onClick={generateMeme}
-						className='py-2 px-4 flex justify-center items-center  bg-[#333333] hover:bg-purple-600 focus:ring-purple-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
+						className='py-2 md:px-4 flex justify-center items-center  bg-purple-500 hover:bg-purple-600 focus:ring-purple-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
 					>
 						Generar Meme
 					</button>
 				</div>
 				<div className=' md:h-[480px] w-full md:w-[60%]'>
-					<div id='meme' className='p-4  h-full'>
+					<div id='meme' className='p-2 md:p-4  h-full'>
 						<canvas ref={memeCanvas} className='w-full h-auto'></canvas>
 					</div>
 					{showSaveButton && ( // Agregar el botón "Guardar Meme" aquí
